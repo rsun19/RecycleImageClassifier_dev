@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <title>Results</title>
+  </head>
+  <body>
+    <!-- <img src="{{ url_for('static', filename='456536.jpg') }}" alt="Picture of a city 2" id="nycTrain">  
+    <img src="{{ url_for('static', filename='city.jpg') }}" alt="Picture of a city" id="nyc">  
+    <img src="{{ url_for('static', filename='wallpaper.jpg') }}" alt="Picture of a city" id="wallpaper"> -->
+    <nav>
+      <div class = "homeHeader">
+        <div id="title">
+          <a class="heading_links" href="/">&nbspRecycleAI</a>
+    </nav>
+    <h2 id="hometitle">Prediction: {{ predicted_class }} with {{ probability }}% certainty</h2>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='dynamic.js') }}"></script>
+  </body>
+</html>
