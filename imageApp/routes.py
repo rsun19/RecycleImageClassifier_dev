@@ -1,22 +1,39 @@
-from flask import Flask, request, render_template
+from flask import Flask, jsonify, request, render_template
 from imageApp import app
 import torch
 import numpy as np
-import requests
-import torch
 import torchvision
 import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-import zipfile
-from pathlib import Path
-import os
-import shutil
-import math
 from PIL import Image
 from torchvision import datasets, transforms
 import torchvision.models as models
+import random
+import json
+import nltk
+from nltk.stem.porter import PorterStemmer
+import os
+import openai
+
+openai.Model.list()
+
+stemmer = PorterStemmer()
+nltk.download('punkt')
+def tokenize(sentence):
+  return nltk.word_tokenize(sentence)
+
+def stem(word):
+  return stemmer.stem(word.lower())
+
+def bag_of_words(tokenized_sentence, all_words):
+  tokenized_sentence = [stem(w) for w in tokenized_sentence]
+  bag = np.zeros(len(all_words), dtype=np.float32)
+  for idx, w in enumerate(all_words):
+    if w in tokenized_sentence:
+      bag[idx] = 1.0
+  return bag
 
 BASE = "https://127.0.0.1:5000/"
 
@@ -32,7 +49,22 @@ class AlexNet(nn.Module):
   
   def forward(self, x):
     return self.network(x)
-  
+
+class NeuralNet(nn.Module):
+  def __init__(self, input_size, hidden_size, num_classes):
+    super(NeuralNet, self).__init__()
+    self.l1 = nn.Linear(input_size, hidden_size)
+    self.l2 = nn.Linear(hidden_size, hidden_size)
+    self.l3 = nn.Linear(hidden_size, num_classes)
+    self.relu = nn.ReLU()
+
+  def forward(self, x):
+    out = self.l1(x)
+    out = self.relu(out)
+    out = self.l2(out)
+    out = self.relu(out)
+    out = self.l3(out)
+    return out
   
 @app.route("/")
 @app.route("/home")
@@ -45,6 +77,51 @@ model.load_state_dict(torch.load("imageApp/cifar_net (4).pth"))
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = model.to(device)
+
+@app.route("/api/chat/<params>", methods=['GET'], endpoint='chat')
+def chat(params):
+    if request.method == 'GET':
+        with open('imageApp/prompts.json', 'r') as json_data:
+            intents = json.load(json_data)
+        
+        data = torch.load('imageApp/chatbot.pth')
+
+        input_size = data["input_size"]
+        hidden_size = data["hidden_size"]
+        output_size = data["output_size"]
+        all_words = data['all_words']
+        tags = data['tags']
+        model_state = data["model_state"]
+        model_1 = NeuralNet(input_size, hidden_size, output_size).to(device)
+        model_1.load_state_dict(model_state)
+        model_1.eval()
+        sentence = " ".join(params.strip().split('+'))
+        ai_sentence = params.replace("+", " ")
+        #return jsonify({"response": sentence})
+        sentence = tokenize(str(sentence))
+        X = bag_of_words(sentence, all_words)
+        X = X.reshape(1, X.shape[0])
+        X = torch.from_numpy(X).to(device)
+
+        output = model_1(X)
+        _, predicted = torch.max(output, dim=1)
+
+        tag = tags[predicted.item()]
+
+        probs = torch.softmax(output, dim=1)
+        prob = probs[0][predicted.item()]
+        if prob.item() > 0.75:
+            for intent in intents['intents']:
+                if tag == intent["tag"]:
+                    return jsonify({'response': f"{random.choice(intent['responses'])}"}), 200
+        else:
+            messages = [{"role": "assistant", "content": ai_sentence }]
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo-0613",
+                messages=messages
+            )
+            response_message = response['choices'][0]['message']['content']
+            return jsonify({'response': response_message, 'hi': messages}), 200
 
 @app.route("/results", methods=['POST'])
 def results():

@@ -1,0 +1,137 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "What's up"
+      ],
+      "responses": [
+        "Hi!", "How can I help?", "What brings you here today?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": [
+        "Have a nice day!", 
+        "Bye!", 
+        "Thanks for visiting!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {
+      "tag": "introduction",
+      "patterns": ["Tell me about yourself", "Who is Robert", "Tell me about Robert", "Who are you", "Tell me about your experiences", "What are your experiences?", "What are your qualifications", "work experience", "experience", "What is your work history?", "What is your work experience?"],
+      "responses": ["Hi, I'm Robert, a third-year computer science student at the University of Virginia. I interned at Red Hat as a Software Engineering Intern and is now currently a TA for a course called Software Development Essentials at the University of Virginia. Past personal projects include a Trip Planning App, Book Blog, an Image Classifier, a Joke Generator, and now this Chat Bot!"]
+    },
+    {
+      "tag": "Red Hat Experience",
+      "patterns": ["Tell me about your experience at Red Hat", "How was Red Hat", "What did Robert do at Red Hat", "What did you do at Red Hat?", "What were you doing at Red Hat", "Why was Red Hat so great?", "Tell me about Red Hat"],
+      "responses": [
+                        "At Red Hat, I mostly worked on front-end work on the console.redhat.com website, with a bit of back-end exposure.\n- Constructed webpages using TypeScript and React, generated search indices, and added new features such as improved form rendering, increased viewport reliability, and cleaner UIs in the Red Hat Hybrid Cloud Console website.\n• Engaged in a week-long hackathon, making a joke-generator iMessage add-on using React, Flask, and Swift.\n- Developed validation scripts for Kafka requests and JSON files, and crafted Cypress end-to-end unit tests for webpages. These efforts successfully identified bugs and bolstered backend and frontend reliability."
+                    ]
+    },
+    {
+      "tag": "Weaknesses",
+      "patterns": ["Weaknesses", "What are your weaknesses", "Tell me about your weaknesses", "What would you say about your weaknesses"],
+      "responses": ["Sometimes, I get too focused on the big picture, such that I sometimes forget about the small things"]
+    },
+    {
+      "tag": "Strengths",
+      "patterns": ["Strengths", "What are your strengths?", "What would you say about your strenghts", "Tell me about your strenghts"],
+      "responses": ["When I get a task to do, I stop at nothing to finish it whether its a problem set, a proof, or an integration for a software project."]
+    },
+    {
+      "tag": "TA Experience",
+      "patterns": ["Tell me about your experience as being a TA", "How was TAing", "What did you do as a TA", "What were you doing at TA", "Tell me about TA-ing"],
+      "responses": [
+                        "As a CS TA, I:\n• Held office hours, answered questions on Piazza, and graded homework assignments in a class of 448 students.\n• Solidified students' understanding of software development concepts and helped them fix bugs in their code."
+                    ]
+    },
+    {
+      "tag": "UVA student experience",
+      "patterns": ["What classes did you take", "How is UVA", "University of Virginia", "classes"],
+      "responses": [
+                        "At UVA, I've taken many relavent coursework including Data Structures and Algorithms, Advanced Software Development, Software Development Essentials, Computer Systems and Organization, Intro. to Mathematical Statistics, Intro. to Regression, Discrete Math, and more!"
+                    ]
+    },
+    {
+      "tag": "Book Blog Experience",
+      "patterns": ["Tell me how you made this book blog", "How was the book blog", "Tell me about the book blog"],
+      "responses": [
+                        "I created a personal book review blog using HTML/CSS, JavaScript, Tailwind, and Flask.\n- Devised API endpoints for overseeing posts and comment sections, merged the New York Times API seamlessly, and maintained a user-facing API with CORS support."
+                    ]
+    },
+    {
+      "tag": "Web Experience",
+      "patterns": ["Web dev experience", "What web development experience do you have", "What's your web dev experience?", "What's your web development experience?"],
+      "responses": [
+                        "I have varied experiences in web development. At Red Hat, I mostly worked on front-end work on the console.redhat.com website, with a bit of back-end exposure.\n- Constructed webpages using TypeScript and React, generated search indices, and added new features such as improved form rendering, increased viewport reliability, and cleaner UIs in the Red Hat Hybrid Cloud Console website.\n- Engaged in a week-long hackathon, making a joke-generator iMessage add-on using React, Flask, and Swift.\n- Developed validation scripts for Kafka requests and JSON files, and crafted Cypress end-to-end unit tests for webpages. These efforts successfully identified bugs and bolstered backend and frontend reliability.\nI also created a personal book review blog using HTML/CSS, JavaScript, Tailwind, and Flask.\n- Devised API endpoints for overseeing posts and comment sections, merged the New York Times API seamlessly, and maintained a user-facing API with CORS support."
+                    ]
+    },
+    {
+      "tag": "RecycleAI",
+      "patterns": ["What is your RecycleAI project?", "RecycleAI", "What did you use for RecycleAI?", "What is RecycleAI?"],
+      "responses": [
+        "For a hackathon, I used PyTorch to train ResNet18, and it achieved an 86% accuracy on the trained images"
+      ]
+    },
+    {
+      "tag": "Statistics",
+      "patterns": ["Tell me about your statistics minor.", "stat minor", "How is the statistics minor?", "Is the statistics minor fun?", "statistics", "Are you learning statistics?"],
+      "responses": ["The statistcs minor is really fun! My favorite classes (and the ones I'm taking now) are Introduction to Mathematical Statistics and Introduction to Regression!"]
+    },
+    {
+      "tag": "CS",
+      "patterns": ["Tell me about the CS major?", "How did you like the CS major?", "CS major", "Computer Science", "Computer Science major"],
+      "responses": ["I love computer science! I have varied experiences including an internship at Red Hat, and many practical full-stack projects which include my book blog and trip planning app!"]
+    },
+    {
+      "tag": "teaching",
+      "patterns": ["What do you love about TAing", "What do you like about being a TA", "Do you like teaching?,", "What do you like about teaching?"],
+      "responses": ["Being a TA has been an amazing experience for me."]
+    },
+    {
+      "tag": "App Experience",
+      "patterns": ["Tell me how you made this app", "How was the Trip Planning app", "Tell me about the Trip Planning app", "How did you make the trip planning app", "I noticed you made the trip planning app", "trip planning app", "mobile app development experience", "tell me about your mobile app development experience", "Tell me about the app you made"],
+      "responses": [
+                        "When making this app, I:\n• Used Flutter, Flask, Postgres, and Firebase, allowing users to log in using Google Sign-In services and share trip itineraries with each other.\n• Integrated Open Street Maps and Open Route Service API to provide basic navigation services, including direction-by-direction navigation as a Google Maps alternative. Also added Chat-GPT API for trip planning purposes.\n• Implemented caching and lazy loading methods to limit API requests and enhance on-device performance."
+                    ]
+    },
+    {
+      "tag": "Book Blog Time",
+      "patterns": ["How long did the book blog take?", "Are you still making the book blog?", "book blog length", "book blog time"],
+      "responses": ["I am always updating, adding new features, and reading! It's still being supported more than one year later!"]
+    },
+    {
+      "tag": "Red Hat explanation",
+      "patterns": ["What makes Red Hat so great?", "What is Red Hat", "Red Hat"],
+      "responses": ["Red Hat, Inc. is an American software company that provides open source software products to enterprises and is a subsidiary of IBM."]
+    },
+    {
+      "tag": "Salsa experience",
+      "patterns": ["How was salsa at UVA", "How good are you at salsaing", "salsa", "was salsa fun"],
+      "responses": ["Salsa club at UVA was a fun time! We do a lot of salsa, bachata, cha cha, and merengue, and I social dance a lot to improve my skills!"]
+    },
+    {
+      "tag": "AI/ML",
+      "patterns": ["Do you have any experience with AI/ML?", "What are your AI/ML experience?", "AI/ML", "How much AI/ML experience do you have?"],
+      "responses": ["I don't have a lot of AI/ML exposure. However, I'm always willing to learn!"]
+    },
+    {
+      "tag": "Firefighting experience",
+      "patterns": ["firefighting", "Are you a firefighter", "how is firefighting"],
+      "responses": ["As a firefighter, I respond to a variety of calls including structure fires, automatic alarms, extrication, HazMat, and more."]
+    }
+  ]
+}
