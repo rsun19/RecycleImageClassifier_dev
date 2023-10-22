@@ -38,7 +38,7 @@
       "tag": "Red Hat Experience",
       "patterns": ["Tell me about your experience at Red Hat", "How was Red Hat", "What did Robert do at Red Hat", "What did you do at Red Hat?", "What were you doing at Red Hat", "Why was Red Hat so great?", "Tell me about Red Hat"],
       "responses": [
-                        "At Red Hat, I mostly worked on front-end work on the console.redhat.com website, with a bit of back-end exposure.\n- Constructed webpages using TypeScript and React, generated search indices, and added new features such as improved form rendering, increased viewport reliability, and cleaner UIs in the Red Hat Hybrid Cloud Console website.\n• Engaged in a week-long hackathon, making a joke-generator iMessage add-on using React, Flask, and Swift.\n- Developed validation scripts for Kafka requests and JSON files, and crafted Cypress end-to-end unit tests for webpages. These efforts successfully identified bugs and bolstered backend and frontend reliability."
+                        "At Red Hat, I mostly worked on front-end work on the console.redhat.com website, with a bit of back-end exposure.\n• Constructed webpages using TypeScript and React, generated search indices, and added new features such as improved form rendering, increased viewport reliability, and cleaner UIs in the Red Hat Hybrid Cloud Console website.\n• Engaged in a week-long hackathon, making a joke-generator iMessage add-on using React, Flask, and Swift.\n•ß Developed validation scripts for Kafka requests and JSON files, and crafted Cypress end-to-end unit tests for webpages. These efforts successfully identified bugs and bolstered backend and frontend reliability."
                     ]
     },
     {
@@ -69,15 +69,20 @@
       "tag": "Book Blog Experience",
       "patterns": ["Tell me how you made this book blog", "How was the book blog", "Tell me about the book blog"],
       "responses": [
-                        "I created a personal book review blog using HTML/CSS, JavaScript, Tailwind, and Flask.\n- Devised API endpoints for overseeing posts and comment sections, merged the New York Times API seamlessly, and maintained a user-facing API with CORS support."
+                        "I created a personal book review blog using HTML/CSS, JavaScript, Tailwind, and Flask.\n• Devised API endpoints for overseeing posts and comment sections, merged the New York Times API seamlessly, and maintained a user-facing API with CORS support."
                     ]
     },
     {
       "tag": "Web Experience",
       "patterns": ["Web dev experience", "What web development experience do you have", "What's your web dev experience?", "What's your web development experience?"],
       "responses": [
-                        "I have varied experiences in web development. At Red Hat, I mostly worked on front-end work on the console.redhat.com website, with a bit of back-end exposure.\n- Constructed webpages using TypeScript and React, generated search indices, and added new features such as improved form rendering, increased viewport reliability, and cleaner UIs in the Red Hat Hybrid Cloud Console website.\n- Engaged in a week-long hackathon, making a joke-generator iMessage add-on using React, Flask, and Swift.\n- Developed validation scripts for Kafka requests and JSON files, and crafted Cypress end-to-end unit tests for webpages. These efforts successfully identified bugs and bolstered backend and frontend reliability.\nI also created a personal book review blog using HTML/CSS, JavaScript, Tailwind, and Flask.\n- Devised API endpoints for overseeing posts and comment sections, merged the New York Times API seamlessly, and maintained a user-facing API with CORS support."
+                        "I have varied experiences in web development. At Red Hat, I mostly worked on front-end work on the console.redhat.com website, with a bit of back-end exposure.\n• Constructed webpages using TypeScript and React, generated search indices, and added new features such as improved form rendering, increased viewport reliability, and cleaner UIs in the Red Hat Hybrid Cloud Console website.\n• Engaged in a week-long hackathon, making a joke-generator iMessage add-on using React, Flask, and Swift.\n• Developed validation scripts for Kafka requests and JSON files, and crafted Cypress end-to-end unit tests for webpages. These efforts successfully identified bugs and bolstered backend and frontend reliability.\nI also created a personal book review blog using HTML/CSS, JavaScript, Tailwind, and Flask.\n• Devised API endpoints for overseeing posts and comment sections, merged the New York Times API seamlessly, and maintained a user-facing API with CORS support."
                     ]
+    },
+    {
+      "tag": "Joke generator",
+      "patterns": ["Talk about your joke generator", "What is your joke generator", "How did you make the joke generator?", "What was hard about the joke generator", "joke generator", "how do you make a joke generator?"],
+      "responses": ["I made a joke generator, of which you can find here: https://robertssun.me/jokegenerator/. It was created using Flask, Swift, and React. Keep in mind that I got these jokes from a dataset, and the clean joke filter isn't perfect."]
     },
     {
       "tag": "RecycleAI",
