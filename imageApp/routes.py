@@ -16,7 +16,10 @@ import nltk
 from nltk.stem.porter import PorterStemmer
 import os
 import openai
+import GptKey
 
+openai.organization = GptKey.organization_key
+openai.api_key = GptKey.api_key
 openai.Model.list()
 
 stemmer = PorterStemmer()

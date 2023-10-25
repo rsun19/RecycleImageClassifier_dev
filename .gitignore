@@ -1,2 +1,3 @@
 .venv/
 /imageApp/__pycache__
+GptKey.py
