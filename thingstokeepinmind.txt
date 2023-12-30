@@ -1,0 +1,5 @@
+sudo apt-get install -y libgl1-mesa-dev
+sudo nano /etc/nginx/sites-enabled/flaskblog
+sudo service nginx restart
+sudo supervisorctl restart all
+sudo nano /etc/nginx/nginx.conf

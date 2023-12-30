@@ -7,24 +7,39 @@
     <title>RecycleAI</title>
   </head>
   <body>
-    <img src="{{ url_for('static', filename='green-seedling-in-soil-free-photo.jpeg') }}" alt="Picture of a city 2" id="nycTrain">  
+    <!-- <img src="{{ url_for('static', filename='green-seedling-in-soil-free-photo.jpeg') }}" alt="Picture of a city 2" id="nycTrain">  
     <img src="{{ url_for('static', filename='green-seedling-in-soil-free-photo.jpeg') }}" alt="Picture of a city" id="nyc">
-    <img src="{{ url_for('static', filename='green-seedling-in-soil-free-photo.jpeg') }}" alt="Picture of a city" id="wallpaper">
+    <img src="{{ url_for('static', filename='green-seedling-in-soil-free-photo.jpeg') }}" alt="Picture of a city" id="wallpaper"> -->
     <nav>
       <div class = "homeHeader">
         <div id="title">
           <a class="heading_links" href="/">&nbspRecycleAI</a>
     </nav>
-    <div id ="hometitle">
-      <h2>Is your item recyclable? Take a picture and check its classification now!</h2>
-      <h5>This model has some trouble identifying paper images. Working to resolve this soon.</h5>
-      <form method="POST" enctype="multipart/form-data" action="/results">
-        <input type="file" name="image">
-        <input type="submit" value="Predict">
-      </form>
+    <div style="display: flex; align-items: center; flex-direction: column; margin-top: 5rem;">
+      <div id ="hometitle">
+        <h2>Upload an image to detect some cars!</h2>
+        <h5>Note that this may take a bit of time.</h5>
+        <h5>Example output:</h5>
+        <img src="{{ url_for('static', filename='test-img.jpeg') }}" style="width: 75%;">
+        <h5>Notes:</h5>
+        <p>1. Trained Yolov8 on Kaggle datasets</p>
+        <p>2. Unfortunately not as accurate as Yolov8 itself &#128517;. However, it is still pretty accurate!</p>
+        <p>3. Uploaded files MUST be jpg, jpeg, png, heic, or webp UNDER 10 MB in size!</p>
+        <p>4. Take your photo HORIZONTALLY (if taking, not uploading)! Otherwise, it will come out in a different orientation. I currently have no fix for this.</p>
+        <form method="POST" enctype="multipart/form-data" action="/car-results">
+          <input type="file" name="carImage">
+          <input type="submit" value="Predict">
+        </form>
+      </div>
+      <div id ="hometitle">
+        <h2>Is your item recyclable? Take a picture and check its classification now!</h2>
+        <h5>This model has some trouble identifying paper images. Working to resolve this soon.</h5>
+        <form method="POST" enctype="multipart/form-data" action="/results">
+          <input type="file" name="image">
+          <input type="submit" value="Predict">
+        </form>
+      </div>
     </div>
-    <br>
-    <br>
     <script type="text/javascript" src="{{ url_for('static', filename='dynamic.js') }}"></script>
   </body>
 </html>

@@ -166,10 +166,6 @@ a:hover, a:active {
   #wallpaper {
     display:none !important;
   }
-  #hometitle {
-    margin-top: 20%;
-    transform: translate(-20%);
-  }
   .dropdown {
     margin-top: 10%;
     transform:translate(-10%);
@@ -186,14 +182,6 @@ a:hover, a:active {
 }
 
 @media screen and (max-width: 630px) {
-  #hometitle {
-    margin-top: 30%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-30%, -50%);
-    padding: 10px;
-    font-size: 15px;
-  }
   .dropdown {
     position: fixed;
     margin-top: 15%;
@@ -239,14 +227,6 @@ a:hover, a:active {
 }
 
 @media screen and (max-width: 400px) {
-  #hometitle {
-    margin-top: 35%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-35%, -50%);
-    padding: 8px;
-    font-size: 15px;
-  }
   .dropdown {
     position: fixed;
     margin-top: 15%;
@@ -551,12 +531,9 @@ p.startingpara {
   text-align:center; 
   background-color: white; 
   color: black; 
-  position:fixed;
-  padding:10px; 
-  top: 20%;
-  left: 50%;
-  /* margin-right: -50%; */
-  transform: translate(-50%, -50%)
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .spoiler {

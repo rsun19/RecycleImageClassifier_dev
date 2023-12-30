@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, request, render_template
+import io
+from flask import Flask, jsonify, request, render_template, send_file
 from imageApp import app
 import torch
 import numpy as np
@@ -16,7 +17,10 @@ import nltk
 from nltk.stem.porter import PorterStemmer
 import os
 import openai
-import GptKey
+from imageApp import GptKey
+import matplotlib.pyplot as plt
+from ultralytics import YOLO
+import base64
 
 openai.organization = GptKey.organization_key
 openai.api_key = GptKey.api_key
@@ -81,6 +85,50 @@ model.load_state_dict(torch.load("imageApp/cifar_net (4).pth"))
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = model.to(device)
 
+yolo_model = YOLO('imageApp/last.pt')
+
+def image_to_base64(image):
+    buffered = io.BytesIO()
+    image.save(buffered, format="JPEG")
+    return base64.b64encode(buffered.getvalue()).decode("utf-8")
+
+ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp']
+
+@app.route("/api/car", methods=["PUT", "OPTIONS"], endpoint="car")
+def detect_cars():
+    try:
+      file = request.files['image']
+      filename = file.filename
+      if (filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png') or filename.endswith('.webp') or filename.endswith('.heic')):
+        image_stream = file.read()
+        img = Image.open(io.BytesIO(image_stream))
+        results = yolo_model(img)
+        for r in results:
+          im_array = r.plot()
+          im = Image.fromarray(im_array[..., ::-1])
+          return jsonify({"images": image_to_base64(im)}), 200
+      else:
+        return jsonify({"message": "File needs to be jpg, jpeg, png, heic, or webp"})
+    except Exception as e:
+       return jsonify({"message": str(e)}), 404
+
+@app.route("/car-results", methods=['POST'], endpoint = "carResult")
+def car_results():
+    # Get uploaded image file
+    if 'carImage' in request.files:
+      car_image_file = request.files['carImage']
+      filename = car_image_file.filename
+      if (filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png') or filename.endswith('.webp') or filename.endswith('.heic')):
+        img = Image.open(car_image_file)
+        results = yolo_model(img)
+        for r in results:
+          im_array = r.plot()
+          im = Image.fromarray(im_array[..., ::-1])
+          data = io.BytesIO()
+          im.save(data, "JPEG")
+          encoded_img_data = base64.b64encode(data.getvalue())
+          return render_template("carresults.html", img_data=encoded_img_data.decode('utf-8'))
+
 @app.route("/api/chat/<params>", methods=['GET'], endpoint='chat')
 def chat(params):
     if request.method == 'GET':
@@ -131,9 +179,6 @@ def results():
     # Get uploaded image file
     image = request.files['image']
 
-    if image.filename.endswith(".heic"):
-        image.__format__ = 'jpg'
-
     # Process image and make prediction
     image_tensor = process_image(Image.open(image))
     output = model(image_tensor)
@@ -173,5 +218,3 @@ def process_image(image):
     return image_tensor
 
 waste_types = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
-
-

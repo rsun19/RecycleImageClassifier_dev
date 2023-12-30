@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <title>Results</title>
+  </head>
+  <body>
+    <nav>
+      <div class = "homeHeader">
+        <div id="title">
+          <a class="heading_links" href="/">&nbspRecycleAI</a>
+    </nav>
+    <div style="display: flex; align-items: center; flex-direction: column;">
+        <h2 style="margin-top: 5rem;">Returned image</h2>
+        <img id="car-image" style="width: 75%;" src="data:image/jpeg;base64,{{ img_data }}">
+    </div>
+  </body>
+</html>
